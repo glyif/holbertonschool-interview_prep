@@ -77,6 +77,9 @@ int is_palindrome(listint_t **head)
 
 	mid = last = fast = slow = *head;
 
+	while (mid)
+		mid = mid->next;
+
 	if (*head == NULL || head == NULL || (*head)->next == NULL)
 		return (1);
 
