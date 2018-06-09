@@ -1,5 +1,4 @@
 #include "palindrome.h"
-#include <stdio.h>
 
 /**
  * is_palindrome - checks if a unsigned long is a palindrome
@@ -9,15 +8,17 @@
 int is_palindrome(unsigned long n)
 {
 	unsigned int length = integer_count(n);
-	char buffer[length];
-	char reverse_buffer[length];
+	char buffer[21];
+	char reverse_buffer[21];
 	unsigned int buffer_counter = 0;
+
+	_memreset(buffer, 21);
+	_memreset(reverse_buffer, 21);
 
 	_itoa(n, buffer, length);
 
 	reverse(buffer, reverse_buffer, length);
 
-	printf("first\n");
 
 	while (buffer[buffer_counter] != '\0'
 		   && reverse_buffer[buffer_counter] != '\0')
@@ -56,6 +57,24 @@ unsigned int integer_count(unsigned long n)
 }
 
 /**
+ * _memreset - modified memreset to reset to '\0'
+ * @buffer: buffer
+ * @length: length of buffer
+ */
+void _memreset(char buffer[], unsigned int length)
+{
+	length--;
+
+	while (length)
+	{
+		buffer[length] = '\0';
+		length--;
+	}
+
+	buffer[length] = '\0';
+}
+
+/**
  * _itoa - modified implementation of itoa
  * @n: integer to turn into a string
  * @buffer: buffer to right into
@@ -63,7 +82,6 @@ unsigned int integer_count(unsigned long n)
  */
 void _itoa(unsigned long n, char buffer[], unsigned int length)
 {
-	buffer[length] = '\0';
 	length--;
 
 	while (n)
