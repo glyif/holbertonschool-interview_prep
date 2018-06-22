@@ -3,6 +3,10 @@
 #include <stdio.h>
 #include <math.h>
 
+/**
+ * menger - print a menger sponge at x level
+ * @level: menger sponge level
+ */
 void menger(int level)
 {
 	int i, j, x, side;
